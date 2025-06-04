@@ -78,3 +78,61 @@ footer {
   margin-bottom: 4px;
   filter: brightness(0) invert(1);
 }
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem 1rem;
+  background-color: #000;
+  color: #fff;
+  flex-direction: column;
+}
+
+.circle-progress {
+  text-align: center;
+}
+
+.circle-progress .percent {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.main-btn {
+  margin-top: 1rem;
+  padding: 10px 24px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.info-section {
+  background: #1b1b1b;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem;
+}
+
+.info-section h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #2a2a2a;
+  color: #fff;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  text-decoration: none;
+}
+
+.info-card img {
+  width: 36px;
+  height: 36px;
+}
