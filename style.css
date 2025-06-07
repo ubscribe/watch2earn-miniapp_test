@@ -57,7 +57,7 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px 0;
+  padding: 14px 0;
   border-top: 1px solid #222;
   z-index: 1000;
 }
@@ -65,7 +65,7 @@ footer {
 .nav-item {
   color: white;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -73,9 +73,9 @@ footer {
 }
 
 .nav-item img {
-  width: 24px;
-  height: 35px;
-  margin-bottom: 4px;
+  width: 28px;
+  height: 40px;
+  margin-bottom: 6px;
   filter: brightness(0) invert(1);
 }
 .hero-section {
