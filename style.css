@@ -124,19 +124,48 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.6rem 0.8rem;
-  background: #2a2a2a;
-  color: #fff;
+  background: none;
   border-radius: 10px;
   margin-bottom: 0.5rem;
   text-decoration: none;
+  color: #fff;
+  padding: 0.6rem 0;
 }
 
-.info-card img {
-  width: 36px;
-  height: 36px;
+.icon-wrap {
+  background-color: #2a2a2a;
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  min-width: 40px;
+  min-height: 40px;
 }
+
+.icon-wrap img {
+  width: 20px;
+  height: 20px;
+}
+
+.text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.text-wrap strong {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.text-wrap span {
+  font-size: 0.72rem;
+  color: #aaa;
+  line-height: 1;
+}
+
 .app-header {
   display: flex;
   align-items: center;
