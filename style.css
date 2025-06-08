@@ -206,21 +206,27 @@ footer {
 .slider-wrapper {
   overflow: hidden;
   width: 100%;
-  margin: 1rem 0;
+  margin: 1rem auto;
+  border-radius: 14px;
 }
 
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: calc(100% * 5); /* если 3 слайда + 2 клона */
+  width: calc(100% * 5); /* 3 слайда + 2 клона */
 }
 
 .slide {
   flex: 0 0 100%;
+  box-sizing: border-box;
+  padding: 1.2rem;
+  background-color: #1b1b1b;
+  color: #fff;
+  border-radius: 14px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .slide-inner {
