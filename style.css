@@ -221,14 +221,14 @@ footer {
 .slider-wrapper {
   overflow: hidden;
   width: 90%;
-  margin: 1.5rem auto;
+  margin: 1rem auto;
   border-radius: 14px;
 }
 
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: 300%; /* для 3 слайдов */
+  width: calc(100% * (количество_слайдов + 2));
 }
 
 .slide {
