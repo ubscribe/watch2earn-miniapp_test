@@ -23,19 +23,15 @@ function createSlide(item) {
 function renderSlider() {
   slider.innerHTML = "";
 
-  // Клонируем последний и добавляем первым
   slider.appendChild(createSlide(sliderData[sliderData.length - 1]));
 
-  // Основные слайды
   sliderData.forEach(item => {
     slider.appendChild(createSlide(item));
   });
 
-  // Клонируем первый и добавляем последним
   slider.appendChild(createSlide(sliderData[0]));
 
-  // Установка стартовой позиции (слайд #1)
-  slider.style.transform = `translateX(-100%)`;
+  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
 }
 
 function updateSlider() {
@@ -44,14 +40,13 @@ function updateSlider() {
 
   currentSlide++;
   slider.style.transition = "transform 0.6s ease-in-out";
-  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
 
   slider.addEventListener("transitionend", () => {
     if (currentSlide === sliderData.length + 1) {
-      // Без анимации возвращаемся на первый реальный слайд
       slider.style.transition = "none";
       currentSlide = 1;
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      slider.style.transform = `translateX(-${100 * currentSlide}%)`;
     }
     isTransitioning = false;
   }, { once: true });
@@ -61,7 +56,3 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSlider();
   setInterval(updateSlider, 3000);
 });
-
-
-
-
