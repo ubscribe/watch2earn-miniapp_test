@@ -53,7 +53,7 @@ function updateSlider() {
   slider.addEventListener("transitionend", () => {
     if (currentSlide >= sliderData.length) {
       // Переход без анимации обратно к первому слайду
-      slider.style.transition = "none";
+      slider.style.transition = "transform 0.6s ease-in-out";
       currentSlide = 0;
       slider.style.transform = `translateX(-100%)`;
     }
