@@ -32,7 +32,7 @@ function createSlide(item) {
 function renderSlider() {
   slider.innerHTML = "";
 
-  // Добавляем клонированный последний слайд в начало
+  // Клон последнего в начало
   const lastClone = createSlide(sliderData[sliderData.length - 1]);
   slider.appendChild(lastClone);
 
@@ -42,33 +42,34 @@ function renderSlider() {
     slider.appendChild(slide);
   });
 
-  // Добавляем клонированный первый слайд в конец
+  // Клон первого в конец
   const firstClone = createSlide(sliderData[0]);
   slider.appendChild(firstClone);
 
-  // Устанавливаем ширину контейнера
+  // Установка ширины контейнера
   slider.style.width = `${(sliderData.length + 2) * 100}%`;
 
-  // Первая позиция — это слайд #1 (после клона)
+  // Переход на первый реальный слайд
   slider.style.transform = `translateX(-100%)`;
 }
 
 function updateSlider() {
   currentSlide++;
+
   slider.style.transition = "transform 0.6s ease-in-out";
   slider.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
 
-  // Если дошли до конца, возвращаемся на начало
+  // Если это последний клон → вернуться на первый реальный
   if (currentSlide >= sliderData.length) {
     setTimeout(() => {
       slider.style.transition = "none";
       slider.style.transform = `translateX(-100%)`;
       currentSlide = 0;
-    }, 600);
+    }, 600); // Время анимации должно совпадать с CSS
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   renderSlider();
-  setInterval(updateSlider, 3000); // прокрутка каждые 3 секунды
+  setInterval(updateSlider, 3000);
 });
