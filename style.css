@@ -222,21 +222,24 @@ footer {
   overflow: hidden;
   width: 100%;
   padding: 1rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 .slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 1rem;
-  padding-left: 1rem;
+  width: 100%;
+  max-width: 340px; /* Ограничиваем ширину */
 }
 
 .slide {
-  flex: 0 0 85%;
+  flex: 0 0 100%;
   background-color: #1e1e1e;
   color: white;
   border-radius: 12px;
   padding: 1rem;
+  margin: 0 0.5rem; /* Немного отступа по бокам */
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
 }
 
