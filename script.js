@@ -23,20 +23,18 @@ function createSlide(item) {
 function renderSlider() {
   slider.innerHTML = "";
 
-  // Клонируем последний слайд
-  const lastClone = createSlide(sliderData[sliderData.length - 1]);
-  slider.appendChild(lastClone);
+  // Клонируем последний и добавляем первым
+  slider.appendChild(createSlide(sliderData[sliderData.length - 1]));
 
   // Основные слайды
   sliderData.forEach(item => {
     slider.appendChild(createSlide(item));
   });
 
-  // Клонируем первый слайд
-  const firstClone = createSlide(sliderData[0]);
-  slider.appendChild(firstClone);
+  // Клонируем первый и добавляем последним
+  slider.appendChild(createSlide(sliderData[0]));
 
-  // Устанавливаем начальную позицию
+  // Установка стартовой позиции (слайд #1)
   slider.style.transform = `translateX(-100%)`;
 }
 
@@ -46,13 +44,14 @@ function updateSlider() {
 
   currentSlide++;
   slider.style.transition = "transform 0.6s ease-in-out";
-  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
+  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 
   slider.addEventListener("transitionend", () => {
     if (currentSlide === sliderData.length + 1) {
+      // Без анимации возвращаемся на первый реальный слайд
       slider.style.transition = "none";
       currentSlide = 1;
-      slider.style.transform = `translateX(-${100 * currentSlide}%)`;
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     isTransitioning = false;
   }, { once: true });
@@ -62,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSlider();
   setInterval(updateSlider, 3000);
 });
+
 
 
 
