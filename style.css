@@ -205,28 +205,33 @@ footer {
 }
 .slider-wrapper {
   overflow: hidden;
-  width: 90%;
-  margin: 1rem auto;
-  border-radius: 14px;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: 100%;
+  width: calc(100% * 5); /* если 3 слайда + 2 клона */
 }
 
 .slide {
-  min-width: 90%;
-  flex-shrink: 0;
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
-  padding: 1.2rem;
+}
+
+.slide-inner {
   background-color: #1b1b1b;
-  color: #fff;
+  padding: 1.2rem;
   border-radius: 14px;
+  width: 90%; /* 👈 вот этот отступ */
+  max-width: 400px;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
