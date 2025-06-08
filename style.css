@@ -233,8 +233,8 @@ footer {
 }
 
 .slide {
-  flex: 0 0 100%;
-  max-width: 100%;
+  flex: 0 0 calc(100% - 2rem); /* Учитываем отступы */
+  margin: 0 1rem;              /* Отступы по краям */
   background-color: #1e1e1e;
   color: white;
   border-radius: 14px;
@@ -243,6 +243,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .slide-title {
