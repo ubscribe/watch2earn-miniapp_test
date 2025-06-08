@@ -213,11 +213,12 @@ footer {
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: calc(100% * 5); /* 3 слайда + 2 клона */
+  width: 100%;
 }
 
 .slide {
-  flex: 0 0 100%;
+  min-width: 100%;
+  flex-shrink: 0;
   box-sizing: border-box;
   padding: 1.2rem;
   background-color: #1b1b1b;
@@ -227,7 +228,6 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 0.5rem;
 }
 
 .slide-title {
