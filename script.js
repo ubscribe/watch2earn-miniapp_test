@@ -4,7 +4,7 @@ const sliderData = [
   { title: "Users Online", value: "1,842", icon: "👥" }
 ];
 
-let currentSlide = 1;
+let currentSlide = 0;
 let isTransitioning = false;
 const slider = document.getElementById("slider");
 
@@ -17,7 +17,6 @@ function createSlide(item) {
       <div class="slide-value">${item.value}</div>
     </div>
   `;
-  // Обязательно фиксируем ширину слайда
   slide.style.minWidth = "100%";
   slide.style.flexShrink = "0";
   return slide;
@@ -26,7 +25,7 @@ function createSlide(item) {
 function renderSlider() {
   slider.innerHTML = "";
 
-  // Клон последнего слайда в начало
+  // Клонируем последний слайд в начало
   const lastClone = createSlide(sliderData[sliderData.length - 1]);
   slider.appendChild(lastClone);
 
@@ -35,11 +34,11 @@ function renderSlider() {
     slider.appendChild(createSlide(item));
   });
 
-  // Клон первого слайда в конец
+  // Клонируем первый слайд в конец
   const firstClone = createSlide(sliderData[0]);
   slider.appendChild(firstClone);
 
-  // Устанавливаем стартовую позицию
+  // Установка на первый настоящий слайд
   slider.style.transform = `translateX(-100%)`;
 }
 
@@ -49,12 +48,13 @@ function updateSlider() {
 
   currentSlide++;
   slider.style.transition = "transform 0.6s ease-in-out";
-  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
+  slider.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
 
   slider.addEventListener("transitionend", () => {
-    if (currentSlide === sliderData.length + 1) {
+    if (currentSlide >= sliderData.length) {
+      // Переход без анимации обратно к первому слайду
       slider.style.transition = "none";
-      currentSlide = 1;
+      currentSlide = 0;
       slider.style.transform = `translateX(-100%)`;
     }
     isTransitioning = false;
@@ -65,4 +65,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSlider();
   setInterval(updateSlider, 3000);
 });
+
 
