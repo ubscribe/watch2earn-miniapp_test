@@ -221,42 +221,41 @@ footer {
 .slider-wrapper {
   overflow: hidden;
   width: 100%;
-  display: flex;
-  justify-content: center;
   margin: 1rem 0;
+  border-radius: 14px;
 }
 
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: 300%; /* если 3 слайда */
+  width: 100%;
 }
 
 .slide {
-  flex: 0 0 calc(100% - 2rem); /* Учитываем отступы */
-  margin: 0 1rem;              /* Отступы по краям */
-  background-color: #1e1e1e;
-  color: white;
-  border-radius: 14px;
-  padding: 1rem;
+  flex: 0 0 100%;
   box-sizing: border-box;
+  padding: 1.2rem;
+  background-color: #1b1b1b;
+  color: #fff;
+  border-radius: 14px;
+  margin: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
+  align-items: center;
 }
 
 .slide-title {
+  font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .slide-value {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  color: #ff4f4f;
-  margin-top: 0.5rem;
+  color: #e53935;
 }
 
