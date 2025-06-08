@@ -32,39 +32,46 @@ function createSlide(item) {
 function renderSlider() {
   slider.innerHTML = "";
 
-  // Клон последнего
+  // Клон последнего слайда в начало
   const lastClone = createSlide(sliderData[sliderData.length - 1]);
   slider.appendChild(lastClone);
 
   // Основные слайды
   sliderData.forEach(item => {
-    slider.appendChild(createSlide(item));
+    const slide = createSlide(item);
+    slider.appendChild(slide);
   });
 
-  // Клон первого
+  // Клон первого слайда в конец
   const firstClone = createSlide(sliderData[0]);
   slider.appendChild(firstClone);
 
-  // Установка ширины (необязательно, если в CSS calc правильно настроен)
+  // Устанавливаем ширину ленты
+  slider.style.width = `${(sliderData.length + 2) * 100}%`;
+
+  // Начинаем с первого реального слайда
   slider.style.transform = `translateX(-100%)`;
 }
 
 function updateSlider() {
   currentSlide++;
+
+  // Анимируем переход
   slider.style.transition = "transform 0.6s ease-in-out";
   slider.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
 
+  // После завершения перехода, если это клон первого слайда → мгновенно вернуть на реальный первый
   if (currentSlide >= sliderData.length) {
     setTimeout(() => {
       slider.style.transition = "none";
       slider.style.transform = `translateX(-100%)`;
       currentSlide = 0;
-    }, 600); // должен совпадать с CSS transition
+    }, 600); // это должно совпадать с CSS transition
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   renderSlider();
-  setInterval(updateSlider, 3000);
+  setInterval(updateSlider, 3000); // каждые 3 секунды
 });
 
