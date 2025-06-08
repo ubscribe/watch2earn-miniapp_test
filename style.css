@@ -112,7 +112,7 @@ footer {
   background: #1b1b1b;
   padding: 0.3rem 0.6rem;
   border-radius: 14px;
-  margin: 0.6rem 0.6rem 0.4rem; auto;
+  margin: 0.6rem auto 0.4rem;
   width: 92%;
   max-width: 420px;
 }
