@@ -213,7 +213,7 @@ footer {
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: calc(100% * 5); /* 3 слайда + 2 клона */
+  width: max-content; /* ✅ будет ширина по количеству слайдов */
 }
 
 .slide {

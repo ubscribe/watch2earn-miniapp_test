@@ -17,21 +17,30 @@ function createSlide(item) {
       <div class="slide-value">${item.value}</div>
     </div>
   `;
+  // Обязательно фиксируем ширину слайда
+  slide.style.minWidth = "100%";
+  slide.style.flexShrink = "0";
   return slide;
 }
 
 function renderSlider() {
   slider.innerHTML = "";
 
-  slider.appendChild(createSlide(sliderData[sliderData.length - 1]));
+  // Клон последнего слайда в начало
+  const lastClone = createSlide(sliderData[sliderData.length - 1]);
+  slider.appendChild(lastClone);
 
+  // Основные слайды
   sliderData.forEach(item => {
     slider.appendChild(createSlide(item));
   });
 
-  slider.appendChild(createSlide(sliderData[0]));
+  // Клон первого слайда в конец
+  const firstClone = createSlide(sliderData[0]);
+  slider.appendChild(firstClone);
 
-  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
+  // Устанавливаем стартовую позицию
+  slider.style.transform = `translateX(-100%)`;
 }
 
 function updateSlider() {
@@ -46,7 +55,7 @@ function updateSlider() {
     if (currentSlide === sliderData.length + 1) {
       slider.style.transition = "none";
       currentSlide = 1;
-      slider.style.transform = `translateX(-${100 * currentSlide}%)`;
+      slider.style.transform = `translateX(-100%)`;
     }
     isTransitioning = false;
   }, { once: true });
@@ -56,3 +65,4 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSlider();
   setInterval(updateSlider, 3000);
 });
+
