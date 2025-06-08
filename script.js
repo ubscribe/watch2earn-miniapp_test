@@ -47,13 +47,13 @@ function updateSlider() {
   isTransitioning = true;
 
   currentSlide++;
-  slider.style.transition = "transform 0.6s ease-in-out";
+  slider.style.transition = "transform 1.5s ease-in-out";
   slider.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
 
   slider.addEventListener("transitionend", () => {
     if (currentSlide >= sliderData.length) {
       // Переход без анимации обратно к первому слайду
-      slider.style.transition = "transform 0.6s ease-in-out";
+      slider.style.transition = "none";
       currentSlide = 0;
       slider.style.transform = `translateX(-100%)`;
     }
