@@ -23,19 +23,21 @@ function createSlide(item) {
 function renderSlider() {
   slider.innerHTML = "";
 
-  // Клонируем последний слайд в начало
-  slider.appendChild(createSlide(sliderData[sliderData.length - 1]));
+  // Клонируем последний слайд
+  const lastClone = createSlide(sliderData[sliderData.length - 1]);
+  slider.appendChild(lastClone);
 
   // Основные слайды
   sliderData.forEach(item => {
     slider.appendChild(createSlide(item));
   });
 
-  // Клонируем первый слайд в конец
-  slider.appendChild(createSlide(sliderData[0]));
+  // Клонируем первый слайд
+  const firstClone = createSlide(sliderData[0]);
+  slider.appendChild(firstClone);
 
-  // Переход к первому реальному слайду
-  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
+  // Устанавливаем начальную позицию
+  slider.style.transform = `translateX(-100%)`;
 }
 
 function updateSlider() {
