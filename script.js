@@ -23,15 +23,19 @@ function createSlide(item) {
 function renderSlider() {
   slider.innerHTML = "";
 
+  // Клонируем последний слайд в начало
   slider.appendChild(createSlide(sliderData[sliderData.length - 1]));
 
+  // Основные слайды
   sliderData.forEach(item => {
     slider.appendChild(createSlide(item));
   });
 
+  // Клонируем первый слайд в конец
   slider.appendChild(createSlide(sliderData[0]));
 
-  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  // Переход к первому реальному слайду
+  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
 }
 
 function updateSlider() {
@@ -40,13 +44,13 @@ function updateSlider() {
 
   currentSlide++;
   slider.style.transition = "transform 0.6s ease-in-out";
-  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  slider.style.transform = `translateX(-${100 * currentSlide}%)`;
 
   slider.addEventListener("transitionend", () => {
     if (currentSlide === sliderData.length + 1) {
       slider.style.transition = "none";
       currentSlide = 1;
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      slider.style.transform = `translateX(-${100 * currentSlide}%)`;
     }
     isTransitioning = false;
   }, { once: true });
