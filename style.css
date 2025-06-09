@@ -109,7 +109,7 @@ header {
 .info-section h2 {
   color: #fff;
   font-size: 1rem;
-  margin: 1rem 0 1rem 0;   /* сверху 0.5rem, снизу 1rem */
+  margin: 1rem 1rem;   /* сверху 0.5rem, снизу 1rem */
   padding-left: 1rem;        /* сильнее сдвигает вправо */
 }
 
