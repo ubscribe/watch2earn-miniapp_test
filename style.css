@@ -227,11 +227,9 @@ footer {
 }
 .mining-stats {
   text-align: center;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem;
   background: #141414;
   border-radius: 14px;
-  max-width: 400px;
-  width: 90%;
 }
 
 .mining-stats h2 {
