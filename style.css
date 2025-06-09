@@ -155,6 +155,7 @@ header {
 .slider-container {
   overflow: hidden;
   padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .slider-wrapper {
@@ -209,6 +210,7 @@ header {
   color: #fff;
   font-size: 1.1rem;
   margin: 0 0 1rem;
+  text-align: center;
 }
 
 .mining-bar {
@@ -231,6 +233,7 @@ header {
   font-size: 0.9rem;
   color: #ccc;
   margin-bottom: 0;
+  text-align: center;
 }
 
 /* Footer */
