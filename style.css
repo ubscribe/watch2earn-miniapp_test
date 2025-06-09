@@ -227,19 +227,19 @@ footer {
   text-align: center;
 }
 .mining-stats {
-  text-align: center;
-  padding: 1.5rem 1rem;
   background: #141414;
   border-radius: 14px;
-  margin: 1.5rem auto;
+  padding: 1.5rem 1rem;
+  margin: 1rem auto;
   width: 90%;
   max-width: 400px;
+  text-align: center;
 }
 
 .mining-stats h2 {
   color: #fff;
-  margin: 1rem 0 1.2rem; /* добавили верхний отступ */
   font-size: 1.1rem;
+  margin: 0 0 1rem;
 }
 
 .mining-bar {
@@ -248,11 +248,7 @@ footer {
   height: 20px;
   overflow: hidden;
   width: 90%;
-  margin-top: 0;
-  margin-right: 1rem;
-  margin-bottom: 0.7rem;
-  margin-left: 1rem;
-  margin: 0.5rem 0 0.75rem; /* 🔥 верх: 0.5rem, низ: 0.75rem */
+  margin: 0 auto 0.75rem; /* центрируем и задаём отступ снизу */
 }
 
 .mining-fill {
@@ -265,7 +261,7 @@ footer {
 .mining-count {
   font-size: 0.9rem;
   color: #ccc;
-  margin-bottom: 1rem; /* добавили нижний отступ */
+  margin-bottom: 0.5rem;
 }
 
 
