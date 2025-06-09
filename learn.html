@@ -7,11 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="learn-container">
     <!-- Прогресс -->
-    <div class="progress-bar">
-      <span class="progress-dot" data-index="0"></span>
+    <div class="progress-bar" id="progress-bar">
+      <span class="progress-dot active" data-index="0"></span>
       <span class="progress-dot" data-index="1"></span>
       <span class="progress-dot" data-index="2"></span>
       <span class="progress-dot" data-index="3"></span>
@@ -21,12 +20,46 @@
     </div>
 
     <!-- Контент слайдов -->
-    <div class="slide-content" id="slide-text">Welcome to $UBSCRIBE</div>
+    <div class="slide-content" id="slide-text">
+      Welcome to <strong>$UBSCRIBE</strong>
+    </div>
 
     <!-- Кнопка -->
     <button class="next-btn" id="next-btn">Continue</button>
   </div>
 
-  <script src="learn.js"></script>
+  <script>
+    const slides = [
+      "Welcome to <strong>$UBSCRIBE</strong>",
+      "$UBSCRIBE is a Watch-to-Earn platform.",
+      "Earn tokens just by watching videos.",
+      "Each view counts. Literally.",
+      "Your time = your value.",
+      "Stake, watch, earn and grow.",
+      "Let the Game of Attention begin."
+    ];
+
+    let currentIndex = 0;
+
+    const slideText = document.getElementById("slide-text");
+    const nextBtn = document.getElementById("next-btn");
+    const dots = document.querySelectorAll(".progress-dot");
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        slideText.innerHTML = slides[currentIndex];
+        updateProgress(currentIndex);
+      } else {
+        window.location.href = "index.html";
+      }
+    });
+
+    function updateProgress(index) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i <= index);
+      });
+    }
+  </script>
 </body>
 </html>
