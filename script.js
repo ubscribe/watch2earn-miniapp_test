@@ -100,5 +100,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 function goToNext() {
-  window.location.href = "index.html";
+  window.location.href = "learn.html";
 }
