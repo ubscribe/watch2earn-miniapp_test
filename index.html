@@ -6,8 +6,6 @@
   <title>$UBSCRIBE</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-
-  <!-- Telegram Login Widget -->
   <script async src="https://telegram.org/js/telegram-widget.js?7"
     data-telegram-login="UBSCRIBE_bot"
     data-size="large"
@@ -32,7 +30,8 @@
     </div>
   </div>
 
-  <section class="info-section">
+  <!-- Learn блок в .common-container -->
+  <section class="info-section common-container">
     <h2>Learn</h2>
     <a href="learn.html" class="info-card">
       <div class="icon-wrap">
@@ -65,18 +64,19 @@
     </a>
   </section>
 
-  <!-- Слайдер -->
-  <div class="slider-container">
-  <div class="slider-wrapper">
-    <div class="slider" id="slider">
-      <!-- Слайды добавляются через JS -->
+  <!-- Слайдер в .common-container -->
+  <div class="slider-container common-container">
+    <div class="slider-wrapper">
+      <div class="slider" id="slider">
+        <!-- Слайды добавляются через JS -->
+      </div>
     </div>
   </div>
-</div>
 
   <footer>
     <p>FAQ: How does earning work? Requirements? Blockchain?</p>
   </footer>
+
   <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="index.html" class="nav-item">
@@ -92,9 +92,7 @@
       <img src="assets/menu-icon.svg" alt="Home" />
     </a>
   </nav>
-  <!-- ✅ Подключение только одного скрипта -->
+
   <script src="script.js"></script>
 </body>
 </html>
-
-    
