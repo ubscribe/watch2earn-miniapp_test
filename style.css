@@ -111,6 +111,7 @@ header {
   font-size: 1rem;
   margin: 0.5rem 0 1rem 0;   /* сверху 0.5rem, снизу 1rem */
   padding-left: 1rem;        /* сильнее сдвигает вправо */
+  margin-top 0.5rem;
 }
 
 .info-card {
