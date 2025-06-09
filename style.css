@@ -112,7 +112,7 @@ footer {
   background: #1b1b1b;
   padding: 0.3rem ;
   border-radius: 14px;
-  margin: 0.6rem;
+  margin: 0.6rem ;
   width: 90%;
   max-width: 400px;
 }
@@ -120,7 +120,7 @@ footer {
 .info-section h2 {
   color: #fff;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem auto;
   padding-left: 0.5rem;
 }
 
