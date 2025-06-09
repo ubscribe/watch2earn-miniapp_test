@@ -5,22 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn $UBSCRIBE</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
 
-  <div class="welcome-screen">
-    <div class="top-bar">
-      <span class="bar-fill" id="bar-fill"></span>
+  <div class="learn-container">
+    <!-- Прогресс -->
+    <div class="progress-bar">
+      <span class="progress-dot" data-index="0"></span>
+      <span class="progress-dot" data-index="1"></span>
+      <span class="progress-dot" data-index="2"></span>
+      <span class="progress-dot" data-index="3"></span>
+      <span class="progress-dot" data-index="4"></span>
+      <span class="progress-dot" data-index="5"></span>
+      <span class="progress-dot" data-index="6"></span>
     </div>
 
-    <div class="welcome-content">
-      <h1>What is $UBSCRIBE?</h1>
-      <p>The future of watch-to-earn. Get rewarded for your attention in crypto.</p>
-      <button class="start-btn" id="start-btn" disabled>Let's go</button>
-    </div>
+    <!-- Контент слайдов -->
+    <div class="slide-content" id="slide-text">Welcome to $UBSCRIBE</div>
+
+    <!-- Кнопка -->
+    <button class="next-btn" id="next-btn">Continue</button>
   </div>
 
-  <script src="script.js"></script>
+  <script src="learn.js"></script>
 </body>
 </html>

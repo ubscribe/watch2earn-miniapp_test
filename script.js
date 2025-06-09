@@ -99,4 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 15); // каждые 15мс
   }
 });
-
+function goToNext() {
+  window.location.href = "index.html";
+}
