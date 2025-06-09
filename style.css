@@ -102,7 +102,7 @@ header {
   background: #1b1b1b;
   border-radius: 14px;
   margin: 1rem auto;
-  padding-top: 0.5rem; /* ✅ Добавь отступ */
+  padding-top: 1.5rem; /* ✅ Добавь отступ */
   width: 90%;
   max-width: 400px;
 }
