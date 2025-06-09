@@ -235,7 +235,7 @@ footer {
 
 .mining-stats h2 {
   color: #fff;
-  margin-bottom: 1rem;
+  margin: 1rem 0 1.2rem; /* добавили верхний отступ */
   font-size: 1.1rem;
 }
 
@@ -262,7 +262,7 @@ footer {
 .mining-count {
   font-size: 0.9rem;
   color: #ccc;
-  margin-bottom: 0.5rem; /* 🔥 добавь отступ снизу */
+  margin-bottom: 1rem; /* добавили нижний отступ */
 }
 
 
