@@ -230,7 +230,6 @@ footer {
   padding: 1.5rem 1rem;
   background: #141414;
   border-radius: 14px;
-  margin: 1.5rem auto;
   max-width: 400px;
   width: 90%;
 }
@@ -246,7 +245,7 @@ footer {
   border-radius: 10px;
   height: 20px;
   overflow: hidden;
-  width: 90%;
+  width: 100%;
   margin-bottom: 0.75rem;
 }
 
