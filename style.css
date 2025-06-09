@@ -225,6 +225,41 @@ footer {
   font-size: 0.8rem;
   text-align: center;
 }
+.mining-stats {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: #141414;
+  border-radius: 14px;
+  margin: 1.5rem auto;
+  max-width: 400px;
+  width: 90%;
+}
 
+.mining-stats h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.mining-bar {
+  background: #333;
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.mining-fill {
+  background: linear-gradient(90deg, #e53935, #ff9800);
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+.mining-count {
+  font-size: 0.9rem;
+  color: #ccc;
+}
 
 

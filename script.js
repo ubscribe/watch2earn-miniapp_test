@@ -65,5 +65,20 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSlider();
   setInterval(updateSlider, 3000);
 });
+let totalMined = 0;
+const maxSupply = 1000000000;
 
+function updateMiningProgress() {
+  // Симуляция: каждое обновление прибавляем случайное число
+  const minedThisTick = Math.floor(Math.random() * 100000); 
+  totalMined += minedThisTick;
+
+  if (totalMined > maxSupply) totalMined = maxSupply;
+
+  const percentage = (totalMined / maxSupply) * 100;
+  document.getElementById("mining-fill").style.width = `${percentage}%`;
+  document.getElementById("mined-count").textContent = totalMined.toLocaleString();
+}
+
+setInterval(updateMiningProgress, 3000); // каждые 3 сек
 
