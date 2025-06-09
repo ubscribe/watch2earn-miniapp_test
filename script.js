@@ -81,4 +81,22 @@ function updateMiningProgress() {
 }
 
 setInterval(updateMiningProgress, 3000); // каждые 3 сек
+// Анимация минибара на странице learn.html
+document.addEventListener("DOMContentLoaded", () => {
+  const barFill = document.getElementById("bar-fill");
+  if (barFill) {
+    let width = 0;
+    const target = 100; // до 100%
+    const speed = 1; // скорость нарастания
+
+    const interval = setInterval(() => {
+      if (width >= target) {
+        clearInterval(interval);
+      } else {
+        width += speed;
+        barFill.style.width = `${width}%`;
+      }
+    }, 15); // каждые 15мс
+  }
+});
 
