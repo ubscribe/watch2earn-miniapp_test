@@ -169,6 +169,7 @@ header {
   margin: 1.5rem auto;
   overflow: hidden;
   border-radius: 12px;
+  padding-bottom: 1rem;
 }
 
 .slider-wrapper {
