@@ -227,7 +227,7 @@ footer {
 }
 .mining-stats {
   text-align: center;
-  padding: 1rem;
+  padding: 0rem;
   background: #141414;
   border-radius: 14px;
 }
