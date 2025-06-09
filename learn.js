@@ -1,36 +1,53 @@
 const slides = [
-  "Welcome to $UBSCRIBE",
-  "The first watch-to-earn token",
-  "Earn by watching YouTube",
-  "Every second = crypto reward",
-  "Only 1,000,000,000 tokens available",
-  "Progress unlocks new rewards",
-  "Let's go mining now!"
+  "Welcome to <strong>$UBSCRIBE</strong>",
+  "$UBSCRIBE is a Watch-to-Earn platform.",
+  "Earn tokens just by watching videos.",
+  "Each view counts. Literally.",
+  "Your time = your value.",
+  "Stake, watch, earn and grow.",
+  "Let the Game of Attention begin."
 ];
 
-let currentSlide = 0;
+const backgrounds = [
+  "url('assets/bg1.png')",
+  "url('assets/bg2.jpg')",
+  "url('assets/bg3.jpg')",
+  "url('assets/bg4.jpg')",
+  "url('assets/bg5.jpg')",
+  "url('assets/bg6.jpg')",
+  "url('assets/bg7.jpg')"
+];
+
+let currentIndex = 0;
 
 const slideText = document.getElementById("slide-text");
 const nextBtn = document.getElementById("next-btn");
 const dots = document.querySelectorAll(".progress-dot");
-
-function updateSlide() {
-  slideText.textContent = slides[currentSlide];
-  dots.forEach((dot, index) => {
-    dot.classList.toggle("active", index <= currentSlide);
-  });
-  if (currentSlide === slides.length - 1) {
-    nextBtn.textContent = "Start Mining";
-  }
-}
+const learnContainer = document.querySelector(".learn-container");
 
 nextBtn.addEventListener("click", () => {
-  if (currentSlide < slides.length - 1) {
-    currentSlide++;
-    updateSlide();
+  if (currentIndex < slides.length - 1) {
+    currentIndex++;
+    slideText.innerHTML = slides[currentIndex];
+    updateProgress(currentIndex);
+    updateBackground(currentIndex);
   } else {
-    window.location.href = "index.html"; // переход на главную
+    window.location.href = "index.html";
   }
 });
 
-document.addEventListener("DOMContentLoaded", updateSlide);
+function updateProgress(index) {
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i <= index);
+  });
+}
+
+function updateBackground(index) {
+  learnContainer.style.backgroundImage = backgrounds[index];
+  learnContainer.style.backgroundSize = "cover";
+  learnContainer.style.backgroundPosition = "center";
+  learnContainer.style.transition = "background-image 0.5s ease-in-out";
+}
+
+// Устанавливаем начальный фон
+updateBackground(0);
