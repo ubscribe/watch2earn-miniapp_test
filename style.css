@@ -249,6 +249,7 @@ footer {
   margin-right: 1rem;
   margin-bottom: 0.7rem;
   margin-left: 1rem;
+  margin: 0.5rem 0 0.75rem; /* 🔥 верх: 0.5rem, низ: 0.75rem */
 }
 
 .mining-fill {
@@ -261,6 +262,7 @@ footer {
 .mining-count {
   font-size: 0.9rem;
   color: #ccc;
+  margin-bottom: 0.5rem; /* 🔥 добавь отступ снизу */
 }
 
 
