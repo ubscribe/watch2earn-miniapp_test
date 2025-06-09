@@ -219,7 +219,6 @@ footer {
 .slide {
   flex: 0 0 100%;
   box-sizing: border-box;
-  padding: 1.2rem;
   background-color: #1b1b1b;
   color: #fff;
   border-radius: 14px;
