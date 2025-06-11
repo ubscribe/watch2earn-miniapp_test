@@ -291,3 +291,8 @@ header {
 .learn-container.slide-6 {
   background: url("assets/bg7.png") no-repeat center center/cover;
 }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
