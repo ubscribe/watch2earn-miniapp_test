@@ -325,3 +325,53 @@ img {
   border-radius: 10px;
   margin-bottom: 1.5rem;
 }
+.learn-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Кнопка внутри изображения, прижата к низу */
+.next-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f1f1f1;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.9rem 1.5rem;
+  border-radius: 14px;
+  border: none;
+  box-shadow: inset -1px -1px 2px rgba(255, 255, 255, 0.8),
+              inset 1px 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.next-btn:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
