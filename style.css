@@ -251,3 +251,43 @@ header {
   height: 100%;
   object-fit: cover;
 }
+.learn-container {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.6s ease-in-out;
+}
+/* ✅ Фоны для каждого слайда на Learn-странице */
+.learn-container.slide-0 {
+  background: url("assets/bg1.png") no-repeat center center/cover;
+}
+
+.learn-container.slide-1 {
+  background: url("assets/bg2.png") no-repeat center center/cover;
+}
+
+.learn-container.slide-2 {
+  background: url("assets/bg3.png") no-repeat center center/cover;
+}
+
+.learn-container.slide-3 {
+  background: url("assets/bg4.png") no-repeat center center/cover;
+}
+
+.learn-container.slide-4 {
+  background: url("assets/bg5.png") no-repeat center center/cover;
+}
+
+.learn-container.slide-5 {
+  background: url("assets/bg6.png") no-repeat center center/cover;
+}
+
+.learn-container.slide-6 {
+  background: url("assets/bg7.png") no-repeat center center/cover;
+}

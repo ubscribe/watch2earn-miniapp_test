@@ -1,29 +1,26 @@
 const TelegramBot = require('node-telegram-bot-api');
 const fs = require('fs');
+const path = require('path');
 
-// 1️⃣ Вставь свой токен бота
-const token = 'YOUR_BOT_TOKEN_HERE';
-
-// 2️⃣ Запускаем бота
+// 🔐 Вставь сюда свой токен
+const token = '8115130502:AAHVv8Vz6m08vaRmHUCFEZboO-aQS8Oqrs0';
 const bot = new TelegramBot(token, { polling: true });
 
-// 3️⃣ Обработка команды /start
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
 
-  // 4️⃣ Отправка видео
-  bot.sendVideo(chatId, fs.createReadStream('welcome.mp4'), {
-    caption: 'Welcome fren to $UBSCRIBE 🔺',
-  }).then(() => {
-    // 5️⃣ После видео — сообщение с кнопками
-    bot.sendMessage(chatId, '🚀 Let\'s go, Sub!\n\nChoose an option below:', {
-      reply_markup: {
-        inline_keyboard: [
-          [{ text: "🏠 Home", web_app: { url: "https://YOUR-NETLIFY-APP.netlify.app/" } }],
-          [{ text: "💰 Balance", web_app: { url: "https://YOUR-NETLIFY-APP.netlify.app/profile.html" } }],
-          [{ text: "🎯 Gigs", web_app: { url: "https://YOUR-NETLIFY-APP.netlify.app/watch.html" } }],
-        ]
-      }
-    });
-  });
+  const videoPath = path.join(__dirname, 'assets', 'intro.mp4');
+
+  const keyboard = {
+    reply_markup: {
+      keyboard: [
+        [{ text: 'Home' }, { text: 'Balance' }, { text: 'Gigs' }]
+      ],
+      resize_keyboard: true
+    },
+    caption: 'Welcome fren'
+  };
+
+  bot.sendVideo(chatId, fs.createReadStream(videoPath), keyboard);
 });
+
