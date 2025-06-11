@@ -309,7 +309,7 @@ img {
   transition: all 0.2s ease;
   width: 80%;
   max-width: 300px;
-  margin: 5rem auto 2rem auto;
+  margin: 5rem auto 1rem auto;
   display: block;
   text-align: center;
 }
