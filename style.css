@@ -327,7 +327,7 @@ header {
 /* Кнопка внутри изображения, прижата к низу */
 .next-btn {
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10; /* ✅ Обязательно */
