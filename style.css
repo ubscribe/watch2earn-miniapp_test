@@ -348,6 +348,7 @@ img {
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none; /* ✅ Это нужно, чтобы изображение не блокировало клик по кнопке */
 }
 
 /* Кнопка внутри изображения, прижата к низу */
@@ -356,6 +357,7 @@ img {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10; /* ✅ Обязательно */
   background-color: #f1f1f1;
   color: #111;
   font-size: 1rem;
@@ -370,6 +372,7 @@ img {
   max-width: 300px;
   text-align: center;
 }
+
 
 .next-btn:hover {
   background-color: #e0e0e0;
