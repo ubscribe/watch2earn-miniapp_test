@@ -28,7 +28,7 @@ const learnContainer = document.querySelector(".learn-container");
 nextBtn.addEventListener("click", () => {
   if (currentIndex < slides.length - 1) {
     currentIndex++;
-    slideText.innerHTML = slides[currentIndex];
+    //slideText.innerHTML = slides[currentIndex];
     updateProgress(currentIndex);
     updateBackground(currentIndex);
   } else {
