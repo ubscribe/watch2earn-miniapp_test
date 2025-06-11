@@ -318,3 +318,10 @@ img {
   background-color: #e0e0e0;
   cursor: pointer;
 }
+.slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}

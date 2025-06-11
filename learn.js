@@ -8,47 +8,48 @@ const slides = [
   "Let the Game of Attention begin."
 ];
 
-const backgrounds = [
-  "url('assets/bg1.png')",
-  "url('assets/bg2.png')",
-  "url('assets/bg3.png')",
-  "url('assets/bg4.png')",
-  "url('assets/bg5.png')",
-  "url('assets/bg6.png')",
-  "url('assets/bg7.png')"
+// Пути к изображениям
+const images = [
+  "assets/bg1.png",
+  "assets/bg2.png",
+  "assets/bg3.png",
+  "assets/bg4.png",
+  "assets/bg5.png",
+  "assets/bg6.png",
+  "assets/bg7.png"
 ];
 
 let currentIndex = 0;
 
-const slideText = document.getElementById("slide-text");
+// DOM элементы
+const slideImage = document.getElementById("slide-image");
 const nextBtn = document.getElementById("next-btn");
 const dots = document.querySelectorAll(".progress-dot");
-const learnContainer = document.querySelector(".learn-container");
 
+// Кнопка "Continue"
 nextBtn.addEventListener("click", () => {
   if (currentIndex < slides.length - 1) {
     currentIndex++;
-    //slideText.innerHTML = slides[currentIndex];
     updateProgress(currentIndex);
-    updateBackground(currentIndex);
+    updateImage(currentIndex);
   } else {
     window.location.href = "index.html";
   }
 });
 
+// Обновление активных точек
 function updateProgress(index) {
   dots.forEach((dot, i) => {
     dot.classList.toggle("active", i <= index);
   });
 }
 
-function updateBackground(index) {
-  learnContainer.style.backgroundImage = backgrounds[index];
-  learnContainer.style.backgroundSize = "cover";
-  learnContainer.style.backgroundPosition = "center";
-  learnContainer.style.transition = "background-image 0.5s ease-in-out";
+// Обновление картинки
+function updateImage(index) {
+  slideImage.src = images[index];
 }
 
-// Устанавливаем начальный фон
-updateBackground(0);
+// Устанавливаем начальное изображение
+updateImage(0);
+
 
