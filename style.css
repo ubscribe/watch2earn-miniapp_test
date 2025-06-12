@@ -45,7 +45,7 @@ header {
   margin: 1rem auto;
   background: #141414;
   border-radius: 14px;
-  padding: calc(env(safe-area-inset-top, 20px) + 7rem) 1rem 1rem;
+  padding: 1.5rem 1rem;
   box-sizing: border-box;
 }
 
