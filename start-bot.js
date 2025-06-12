@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Заменить на свой токен бота
-const token = '8115130502:AAHVv8Vz6m08vaRmHUCFEZboO-aQS8Oqrs0'; // ⚠️ Обязательно замени
+const token = '8115130502:AAHVv8Vz6m08vaRmHUCFEZboO-aQS8Oqrs0';  // ⚠️ Замени на свой
 
 // Создаём бота
 const bot = new TelegramBot(token, { polling: true });
@@ -23,14 +23,6 @@ bot.onText(/\/start/, (msg) => {
           { text: 'Home', callback_data: 'home' },
           { text: 'Balance', callback_data: 'balance' },
           { text: 'Gigs', callback_data: 'gigs' }
-        ],
-        [
-          {
-            text: '🚀 Launch App',
-            web_app: {
-              url: 'https://leafy-hamster-2d0d18.netlify.app/' // 👈 ЗАМЕНИ на свой HTTPS URL
-            }
-          }
         ]
       ]
     }
