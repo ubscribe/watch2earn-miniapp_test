@@ -1,30 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Проверяем Telegram WebApp API
+  // Telegram user data
   if (window.Telegram && Telegram.WebApp && Telegram.WebApp.initDataUnsafe.user) {
     const user = Telegram.WebApp.initDataUnsafe.user;
 
-    // Обновление аватара
     const avatarImg = document.getElementById("profile-avatar");
-    if (user.photo_url) {
+    if (avatarImg && user.photo_url) {
       avatarImg.src = user.photo_url;
     }
 
-    // Имя пользователя
     const nameEl = document.querySelector(".username");
-    if (user.first_name) {
+    if (nameEl && user.first_name) {
       nameEl.textContent = user.first_name;
     }
 
-    // @username
     const handleEl = document.querySelector(".user-handle");
-    if (user.username) {
+    if (handleEl && user.username) {
       handleEl.textContent = `@${user.username}`;
-    } else {
-      handleEl.textContent = "@unknown";
+    } else if (handleEl) {
+      handleEl.textContent = "@anonymous";
     }
   }
 
-  // Задания и баланс
+  // Task rewards and progress
   const tasks = [
     { key: 'watch_video', reward: 100, statusId: 'watch-status' },
     { key: 'share', reward: 200, statusId: 'share-status' },
@@ -35,12 +32,24 @@ document.addEventListener("DOMContentLoaded", () => {
   let total = 0;
   tasks.forEach(task => {
     const done = localStorage.getItem(`task_${task.key}`) === 'done';
-    if (done) {
+    if (done && document.getElementById(task.statusId)) {
       document.getElementById(task.statusId).textContent = '✅';
       total += task.reward;
     }
   });
 
-  document.getElementById("total-balance").textContent = `$${total}`;
+  const balanceEl = document.getElementById("total-balance");
+  if (balanceEl) {
+    balanceEl.textContent = `$${total}`;
+  }
 });
+
+// Invite and help functions
+function invite() {
+  alert("🔗 Share your referral link via Telegram");
+}
+
+function help() {
+  alert("❓ Visit @support_bot or check our FAQ.");
+}
 
