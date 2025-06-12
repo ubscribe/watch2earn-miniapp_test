@@ -1,3 +1,36 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // ✅ Telegram WebApp full expand
+  if (window.Telegram && Telegram.WebApp) {
+    Telegram.WebApp.expand();
+    Telegram.WebApp.ready();
+  }
+
+  // Slider
+  renderSlider();
+  setInterval(updateSlider, 3000);
+
+  // Mining progress
+  setInterval(updateMiningProgress, 3000);
+
+  // Bar fill animation (optional for learn.html)
+  const barFill = document.getElementById("bar-fill");
+  if (barFill) {
+    let width = 0;
+    const target = 100;
+    const speed = 1;
+    const interval = setInterval(() => {
+      if (width >= target) {
+        clearInterval(interval);
+      } else {
+        width += speed;
+        barFill.style.width = `${width}%`;
+      }
+    }, 15);
+  }
+});
+
+// ----------------- Slider -----------------
+
 const sliderData = [
   { title: "YouTube Revenue", value: "$0.00", icon: "📺" },
   { title: "Token Price", value: "$0.0142", icon: "💰" },
@@ -24,35 +57,25 @@ function createSlide(item) {
 
 function renderSlider() {
   slider.innerHTML = "";
-
-  // Клонируем последний слайд в начало
   const lastClone = createSlide(sliderData[sliderData.length - 1]);
   slider.appendChild(lastClone);
-
-  // Основные слайды
   sliderData.forEach(item => {
     slider.appendChild(createSlide(item));
   });
-
-  // Клонируем первый слайд в конец
   const firstClone = createSlide(sliderData[0]);
   slider.appendChild(firstClone);
-
-  // Установка на первый настоящий слайд
   slider.style.transform = `translateX(-100%)`;
 }
 
 function updateSlider() {
   if (isTransitioning) return;
   isTransitioning = true;
-
   currentSlide++;
   slider.style.transition = "transform 1.5s ease-in-out";
   slider.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
 
   slider.addEventListener("transitionend", () => {
     if (currentSlide >= sliderData.length) {
-      // Переход без анимации обратно к первому слайду
       slider.style.transition = "none";
       currentSlide = 0;
       slider.style.transform = `translateX(-100%)`;
@@ -61,18 +84,14 @@ function updateSlider() {
   }, { once: true });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderSlider();
-  setInterval(updateSlider, 3000);
-});
+// ----------------- Mining -----------------
+
 let totalMined = 0;
 const maxSupply = 1000000000;
 
 function updateMiningProgress() {
-  // Симуляция: каждое обновление прибавляем случайное число
-  const minedThisTick = Math.floor(Math.random() * 100000); 
+  const minedThisTick = Math.floor(Math.random() * 100000);
   totalMined += minedThisTick;
-
   if (totalMined > maxSupply) totalMined = maxSupply;
 
   const percentage = (totalMined / maxSupply) * 100;
@@ -80,34 +99,8 @@ function updateMiningProgress() {
   document.getElementById("mined-count").textContent = totalMined.toLocaleString();
 }
 
-setInterval(updateMiningProgress, 3000); // каждые 3 сек
-// Анимация минибара на странице learn.html
-document.addEventListener("DOMContentLoaded", () => {
-  const barFill = document.getElementById("bar-fill");
-  if (barFill) {
-    let width = 0;
-    const target = 100; // до 100%
-    const speed = 1; // скорость нарастания
+// ----------------- Navigation -----------------
 
-    const interval = setInterval(() => {
-      if (width >= target) {
-        clearInterval(interval);
-      } else {
-        width += speed;
-        barFill.style.width = `${width}%`;
-      }
-    }, 15); // каждые 15мс
-  }
-});
 function goToNext() {
   window.location.href = "learn.html";
 }
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.Telegram && Telegram.WebApp?.expand) {
-    Telegram.WebApp.expand(); // обычное расширение
-  }
-
-  if (Telegram.WebApp?.requestFullscreen) {
-    Telegram.WebApp.requestFullscreen(); // 👉 полноэкранный режим
-  }
-});
