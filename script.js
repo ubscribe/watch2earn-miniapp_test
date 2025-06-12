@@ -1,16 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Запрос настоящего полноэкранного режима
-  if (Telegram?.WebApp?.requestFullscreen) {
-    Telegram.WebApp.requestFullscreen();
-  }
+  // Сообщаем Telegram, что всё готово
+  Telegram.WebApp.ready();
 
-  // ✅ Расширение WebApp (fallback)
+  // Пытаемся расширить WebApp (например, если fullscreen не сработает)
   if (Telegram?.WebApp?.expand) {
     Telegram.WebApp.expand();
   }
 
-  // ✅ Сообщаем Telegram, что всё готово
-  Telegram.WebApp.ready();
+  // Отложенный вызов полноэкранного режима
+  setTimeout(() => {
+    if (Telegram?.WebApp?.requestFullscreen) {
+      Telegram.WebApp.requestFullscreen();
+    }
+  }, 300);
 
   // ----------------- Слайдер -----------------
   renderSlider();

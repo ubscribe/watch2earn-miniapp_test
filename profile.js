@@ -15,35 +15,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleEl = document.querySelector(".user-handle");
     if (handleEl && user.username) {
-    handleEl.textContent = `@${user.username}`;
-    localStorage.setItem("username", user.username); // ✅ Сохраняем username
+      handleEl.textContent = `@${user.username}`;
+      localStorage.setItem("username", user.username); // ✅ Сохраняем username
     } else if (handleEl) {
-    handleEl.textContent = "@anonymous";
-    localStorage.setItem("username", "anonymous"); // ✅ Чтобы invite всё равно работал
+      handleEl.textContent = "@anonymous";
+      localStorage.setItem("username", "anonymous"); // ✅ Чтобы invite всё равно работал
     }
 
-  // Task rewards and progress
-  const tasks = [
-    { key: 'watch_video', reward: 100, statusId: 'watch-status' },
-    { key: 'share', reward: 200, statusId: 'share-status' },
-    { key: 'follow', reward: 300, statusId: 'follow-status' },
-    { key: 'like', reward: 200, statusId: 'like-status' }
-  ];
+    // Task rewards and progress
+    const tasks = [
+      { key: 'watch_video', reward: 100, statusId: 'watch-status' },
+      { key: 'share', reward: 200, statusId: 'share-status' },
+      { key: 'follow', reward: 300, statusId: 'follow-status' },
+      { key: 'like', reward: 200, statusId: 'like-status' }
+    ];
 
-  let total = 0;
-  tasks.forEach(task => {
-    const done = localStorage.getItem(`task_${task.key}`) === 'done';
-    if (done && document.getElementById(task.statusId)) {
-      document.getElementById(task.statusId).textContent = '✅';
-      total += task.reward;
+    let total = 0;
+    tasks.forEach(task => {
+      const done = localStorage.getItem(`task_${task.key}`) === 'done';
+      if (done && document.getElementById(task.statusId)) {
+        document.getElementById(task.statusId).textContent = '✅';
+        total += task.reward;
+      }
+    });
+
+    const balanceEl = document.getElementById("total-balance");
+    if (balanceEl) {
+      balanceEl.textContent = `$${total}`;
     }
-  });
+  } // ← закрываем if (Telegram...)
+}); // ← закрываем DOMContentLoaded
 
-  const balanceEl = document.getElementById("total-balance");
-  if (balanceEl) {
-    balanceEl.textContent = `$${total}`;
-  }
-});
 
 // Invite and help functions
 function invite() {
