@@ -112,3 +112,39 @@ function addToHome() {
     alert("Telegram не поддерживает эту функцию на вашем устройстве.");
   }
 }
+import { supabase } from './supabase.js';
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const tgUser = Telegram?.WebApp?.initDataUnsafe?.user;
+  if (!tgUser) return;
+
+  const username = tgUser.username || `tg${tgUser.id}`;
+  localStorage.setItem("username", username);
+
+  // 1. Проверка: есть ли такой юзер в базе
+  const { data: existingUser, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("username", username)
+    .single();
+
+  if (!existingUser) {
+    // 2. Сохраняем пригласителя, если есть
+    const referrer = localStorage.getItem("ref") || null;
+
+    const { error: insertError } = await supabase
+      .from("users")
+      .insert([{ username, referrer }]);
+
+    // 3. Начисляем поинты пригласителю
+    if (referrer) {
+      await supabase.rpc("add_points_to_referrer", { ref_username: referrer });
+    }
+
+    if (!insertError) {
+      console.log("👤 User auto-registered:", username);
+    }
+  } else {
+    console.log("✅ User already registered:", username);
+  }
+});

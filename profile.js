@@ -15,11 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const handleEl = document.querySelector(".user-handle");
     if (handleEl && user.username) {
-      handleEl.textContent = `@${user.username}`;
+    handleEl.textContent = `@${user.username}`;
+    localStorage.setItem("username", user.username); // ✅ Сохраняем username
     } else if (handleEl) {
-      handleEl.textContent = "@anonymous";
+    handleEl.textContent = "@anonymous";
+    localStorage.setItem("username", "anonymous"); // ✅ Чтобы invite всё равно работал
     }
-  }
 
   // Task rewards and progress
   const tasks = [
@@ -46,10 +47,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Invite and help functions
 function invite() {
-  alert("🔗 Share your referral link via Telegram");
+  const handle = document.querySelector(".user-handle")?.textContent.replace('@', '') || 'anonymous';
+  const refLink = `https://leafy-hamster-2d0d18.netlify.app/?ref=${handle}`;
+  document.getElementById("ref-link").value = refLink;
+  document.getElementById("invite-modal").classList.remove("hidden");
 }
 
 function help() {
   alert("❓ Visit @support_bot or check our FAQ.");
 }
+function copyReferral() {
+  const input = document.getElementById("ref-link");
+  input.select();
+  document.execCommand("copy");
+  alert("Referral link copied to clipboard!");
+}
 
+function closeInviteModal() {
+  document.getElementById("invite-modal").classList.add("hidden");
+}

@@ -36,7 +36,14 @@
       <button onclick="help()">Help</button>
     </div>
   </div>
-
+    <div id="invite-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Your referral link</h3>
+    <input id="ref-link" type="text" readonly />
+    <button onclick="copyReferral()">Copy Link</button>
+    <button onclick="closeInviteModal()">Close</button>
+  </div>
+</div>
   <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="index.html" class="nav-item">
