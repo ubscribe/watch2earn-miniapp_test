@@ -335,7 +335,7 @@ header {
 }
 .progress-bar {
   position: absolute;
-  top: 20px;
+  top: env(safe-area-inset-top, 20px); /* 👈 динамически сдвигает от “брови” */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
