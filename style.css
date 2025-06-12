@@ -19,7 +19,7 @@ p {
 
 header {
   text-align: center;
-  padding: 1.2rem 1rem 0.5rem;
+  padding: calc(env(safe-area-inset-top, 20px) + 6rem) 1rem 0.5rem;
 }
 
 /* Кнопки */
