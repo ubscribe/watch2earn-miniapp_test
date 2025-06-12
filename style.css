@@ -305,7 +305,7 @@ header {
   object-fit: cover;
   display: block;
   pointer-events: none;
-  transform: scale(0.96); /* 👈 Слегка уменьшить масштаб */
+  transform: scale(0.92); /* 👈 Слегка уменьшить масштаб */
   transform-origin: center;
 }
 
