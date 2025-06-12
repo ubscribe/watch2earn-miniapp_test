@@ -626,7 +626,7 @@ header {
 
 .community-container {
   text-align: center;
-  padding: calc(env(safe-area-inset-top, 20px) + 2rem) 1rem 6rem;
+  padding: calc(env(safe-area-inset-top, 20px) + 6rem) 1rem 6rem;
   color: #fff;
 }
 
