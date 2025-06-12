@@ -102,3 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function goToNext() {
   window.location.href = "learn.html";
 }
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.Telegram && Telegram.WebApp?.expand) {
+    Telegram.WebApp.expand(); // обычное расширение
+  }
+
+  if (Telegram.WebApp?.requestFullscreen) {
+    Telegram.WebApp.requestFullscreen(); // 👉 полноэкранный режим
+  }
+});
