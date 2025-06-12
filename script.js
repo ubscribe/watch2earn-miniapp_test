@@ -1,18 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Telegram WebApp full expand
-  if (window.Telegram && Telegram.WebApp) {
-    Telegram.WebApp.expand();
-    Telegram.WebApp.ready();
+  // ✅ Запрос настоящего полноэкранного режима
+  if (Telegram?.WebApp?.requestFullscreen) {
+    Telegram.WebApp.requestFullscreen();
   }
 
-  // Slider
+  // ✅ Расширение WebApp (fallback)
+  if (Telegram?.WebApp?.expand) {
+    Telegram.WebApp.expand();
+  }
+
+  // ✅ Сообщаем Telegram, что всё готово
+  Telegram.WebApp.ready();
+
+  // ----------------- Слайдер -----------------
   renderSlider();
   setInterval(updateSlider, 3000);
 
-  // Mining progress
+  // ----------------- Майн-прогресс -----------------
   setInterval(updateMiningProgress, 3000);
 
-  // Bar fill animation (optional for learn.html)
+  // ----------------- Анимация заливки -----------------
   const barFill = document.getElementById("bar-fill");
   if (barFill) {
     let width = 0;
@@ -99,8 +106,3 @@ function updateMiningProgress() {
   document.getElementById("mined-count").textContent = totalMined.toLocaleString();
 }
 
-// ----------------- Navigation -----------------
-
-function goToNext() {
-  window.location.href = "learn.html";
-}
