@@ -4,26 +4,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ✅ Telegram WebApp инициализация
   Telegram.WebApp.ready();
 
-  // ✅ Попытка expand (если доступно)
+  // ✅ Расширение WebApp (fallback)
   if (Telegram?.WebApp?.expand) {
     Telegram.WebApp.expand();
   }
 
-  // ✅ Безопасный вызов fullscreen через задержку
+  // ✅ Пробуем fullscreen с небольшой задержкой
   setTimeout(() => {
     if (Telegram?.WebApp?.requestFullscreen) {
       Telegram.WebApp.requestFullscreen();
+      console.log("✅ Fullscreen requested");
+    } else {
+      console.log("❌ Fullscreen not supported");
     }
   }, 300);
 
-  // ✅ Получаем данные пользователя из Telegram
+  // ✅ Получаем пользователя из Telegram
   const tgUser = Telegram?.WebApp?.initDataUnsafe?.user;
   if (tgUser) {
     const username = tgUser.username || `tg${tgUser.id}`;
     localStorage.setItem("username", username);
 
     try {
-      // Проверяем, есть ли пользователь в базе
+      // Проверка в Supabase
       const { data: existingUser } = await supabase
         .from("users")
         .select("*")
@@ -53,8 +56,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // ----------------- Слайдер -----------------
-  renderSlider();
-  setInterval(updateSlider, 3000);
+  const slider = document.getElementById("slider");
+  if (slider) {
+    renderSlider(slider);
+    setInterval(() => updateSlider(slider), 3000);
+  }
 
   // ----------------- Майн-прогресс -----------------
   setInterval(updateMiningProgress, 3000);
@@ -86,7 +92,6 @@ const sliderData = [
 
 let currentSlide = 0;
 let isTransitioning = false;
-const slider = document.getElementById("slider");
 
 function createSlide(item) {
   const slide = document.createElement("div");
@@ -102,7 +107,7 @@ function createSlide(item) {
   return slide;
 }
 
-function renderSlider() {
+function renderSlider(slider) {
   slider.innerHTML = "";
   const lastClone = createSlide(sliderData[sliderData.length - 1]);
   slider.appendChild(lastClone);
@@ -114,8 +119,8 @@ function renderSlider() {
   slider.style.transform = `translateX(-100%)`;
 }
 
-function updateSlider() {
-  if (isTransitioning) return;
+function updateSlider(slider) {
+  if (!slider || isTransitioning) return;
   isTransitioning = true;
   currentSlide++;
   slider.style.transition = "transform 1.5s ease-in-out";
@@ -142,11 +147,14 @@ function updateMiningProgress() {
   if (totalMined > maxSupply) totalMined = maxSupply;
 
   const percentage = (totalMined / maxSupply) * 100;
-  document.getElementById("mining-fill").style.width = `${percentage}%`;
-  document.getElementById("mined-count").textContent = totalMined.toLocaleString();
+  const fill = document.getElementById("mining-fill");
+  const count = document.getElementById("mined-count");
+
+  if (fill) fill.style.width = `${percentage}%`;
+  if (count) count.textContent = totalMined.toLocaleString();
 }
 
-// ----------------- Добавить на главный экран -----------------
+// ----------------- Добавить на домашний экран -----------------
 
 function addToHome() {
   if (Telegram.WebApp?.addToHomeScreen) {
@@ -155,3 +163,4 @@ function addToHome() {
     alert("Telegram не поддерживает эту функцию на вашем устройстве.");
   }
 }
+
