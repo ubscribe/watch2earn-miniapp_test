@@ -7,9 +7,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="profile-container">
-    <h1>👤 My Profile</h1>
+    <div class="profile-header">
+      <div class="avatar-wrapper" onclick="window.location.href='avatar-shop.html'">
+        <img id="profile-avatar" src="assets/avatars/default.png" alt="Avatar" class="avatar-img" />
+      </div>
+      <h2 class="username">John Doe</h2>
+      <p class="user-handle">@johndoe</p>
+    </div>
 
     <div class="profile-balance">
       <p>Total Earned:</p>
@@ -25,9 +30,13 @@
         <li>❤️ Like a tweet — <span id="like-status">❌</span></li>
       </ul>
     </div>
+
+    <div class="profile-buttons">
+      <button onclick="invite()">Invite friends</button>
+      <button onclick="help()">Help</button>
+    </div>
   </div>
 
-  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="index.html" class="nav-item">
       <img src="assets/home-icon.svg" alt="Main" />
@@ -59,10 +68,17 @@
         total += task.reward;
       }
     });
-
     document.getElementById("total-balance").textContent = `$${total}`;
-  </script>
 
+    function invite() {
+      alert("🔗 Share your referral link via Telegram");
+    }
+
+    function help() {
+      alert("❓ Visit @support_bot or check our FAQ.");
+    }
+  </script>
 </body>
 </html>
+
 
