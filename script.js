@@ -105,4 +105,10 @@ function updateMiningProgress() {
   document.getElementById("mining-fill").style.width = `${percentage}%`;
   document.getElementById("mined-count").textContent = totalMined.toLocaleString();
 }
-
+function addToHome() {
+  if (Telegram.WebApp?.addToHomeScreen) {
+    Telegram.WebApp.addToHomeScreen();
+  } else {
+    alert("Telegram не поддерживает эту функцию на вашем устройстве.");
+  }
+}
