@@ -4,29 +4,41 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ✅ Telegram WebApp инициализация
   Telegram.WebApp.ready();
 
-  // ✅ Расширение WebApp (fallback)
-  if (Telegram?.WebApp?.expand) {
+  // ✅ Расширяем WebApp
+  if (Telegram.WebApp.expand) {
     Telegram.WebApp.expand();
   }
 
-  // ✅ Пробуем fullscreen с небольшой задержкой
+  // ✅ Подписка на события fullscreen
+  Telegram.WebApp.onEvent("fullscreenChanged", (isFullscreen) => {
+    console.log("📲 Fullscreen changed:", isFullscreen);
+  });
+
+  Telegram.WebApp.onEvent("fullscreenFailed", () => {
+    console.warn("❌ Fullscreen failed or not supported");
+  });
+
+  // ✅ Пробуем запустить fullscreen через Telegram
   setTimeout(() => {
-    if (Telegram?.WebApp?.requestFullscreen) {
-      Telegram.WebApp.requestFullscreen();
-      console.log("✅ Fullscreen requested");
-    } else {
-      console.log("❌ Fullscreen not supported");
+    try {
+      if (Telegram.WebApp.requestFullscreen) {
+        Telegram.WebApp.requestFullscreen();
+        console.log("✅ Fullscreen requested");
+      } else {
+        console.warn("⚠️ Telegram.WebApp.requestFullscreen не поддерживается");
+      }
+    } catch (err) {
+      console.error("🚫 Fullscreen error:", err);
     }
   }, 300);
 
-  // ✅ Получаем пользователя из Telegram
-  const tgUser = Telegram?.WebApp?.initDataUnsafe?.user;
+  // ✅ Получаем Telegram-пользователя
+  const tgUser = Telegram.WebApp.initDataUnsafe?.user;
   if (tgUser) {
     const username = tgUser.username || `tg${tgUser.id}`;
     localStorage.setItem("username", username);
 
     try {
-      // Проверка в Supabase
       const { data: existingUser } = await supabase
         .from("users")
         .select("*")
@@ -55,17 +67,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // ----------------- Слайдер -----------------
+  // ✅ Инициализация слайдера
   const slider = document.getElementById("slider");
   if (slider) {
     renderSlider(slider);
     setInterval(() => updateSlider(slider), 3000);
   }
 
-  // ----------------- Майн-прогресс -----------------
+  // ✅ Майн-прогресс
   setInterval(updateMiningProgress, 3000);
 
-  // ----------------- Анимация заливки -----------------
+  // ✅ Анимация заливки
   const barFill = document.getElementById("bar-fill");
   if (barFill) {
     let width = 0;
@@ -136,7 +148,7 @@ function updateSlider(slider) {
   }, { once: true });
 }
 
-// ----------------- Майнинг -----------------
+// ----------------- Майн-прогресс -----------------
 
 let totalMined = 0;
 const maxSupply = 1000000000;
@@ -154,7 +166,7 @@ function updateMiningProgress() {
   if (count) count.textContent = totalMined.toLocaleString();
 }
 
-// ----------------- Добавить на домашний экран -----------------
+// ----------------- Добавить на главный экран -----------------
 
 function addToHome() {
   if (Telegram.WebApp?.addToHomeScreen) {
@@ -163,4 +175,3 @@ function addToHome() {
     alert("Telegram не поддерживает эту функцию на вашем устройстве.");
   }
 }
-
