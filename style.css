@@ -354,3 +354,115 @@ header {
   background-color: #fff;
   opacity: 1;
 }
+.tasks-container {
+  max-width: 500px;
+  padding: 1.5rem 1rem 5rem;
+  margin: 0 auto;
+}
+
+.task-card {
+  background: #111;
+  border-radius: 16px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: inset 0 0 0 1px #222;
+}
+
+.task-icon {
+  font-size: 1.6rem;
+}
+
+.task-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-info strong {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.task-info span {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.claim-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.claim-btn:hover {
+  background: #333;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #111;
+  padding: 1.5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-content label {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.modal-content input {
+  margin-top: 0.8rem;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background: #222;
+  color: #fff;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: #333;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.modal-content p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.hidden {
+  display: none;
+}
