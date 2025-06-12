@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <div class="profile-container">
     <div class="profile-header">
       <div class="avatar-wrapper" onclick="window.location.href='avatar-shop.html'">
@@ -37,6 +38,7 @@
     </div>
   </div>
 
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="index.html" class="nav-item">
       <img src="assets/home-icon.svg" alt="Main" />
@@ -52,32 +54,8 @@
     </a>
   </nav>
 
-  <script>
-    const tasks = [
-      { key: 'watch_video', reward: 100, statusId: 'watch-status' },
-      { key: 'share', reward: 200, statusId: 'share-status' },
-      { key: 'follow', reward: 300, statusId: 'follow-status' },
-      { key: 'like', reward: 200, statusId: 'like-status' }
-    ];
-
-    let total = 0;
-    tasks.forEach(task => {
-      const done = localStorage.getItem(`task_${task.key}`) === 'done';
-      if (done) {
-        document.getElementById(task.statusId).textContent = '✅';
-        total += task.reward;
-      }
-    });
-    document.getElementById("total-balance").textContent = `$${total}`;
-
-    function invite() {
-      alert("🔗 Share your referral link via Telegram");
-    }
-
-    function help() {
-      alert("❓ Visit @support_bot or check our FAQ.");
-    }
-  </script>
+  <!-- JS for profile logic -->
+  <script src="profile.js"></script>
 </body>
 </html>
 
