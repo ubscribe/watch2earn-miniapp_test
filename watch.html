@@ -2,34 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Watch2Earn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$UBSCRIBE Tasks</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-  <header class="top-header">
-    <a href="index.html" class="back-btn">
-      <img src="assets/back-icon.svg" alt="Back" />
-    </a>
-    <h1>Watch2Earn</h1>
-  </header>
+  <div class="tasks-container">
+    <h1>$UBSCRIBE</h1>
+    <h2>Epoch 1</h2>
+    <p>Complete tasks to mine $UBSCRIBE tokens</p>
 
-  <main class="page-content">
-    <h2>Список заданий</h2>
-    <ul class="task-list">
-      <li>
-        📺 Посмотри видео "Как работает $UBSCRIBE"
-        <button>Открыть</button>
-      </li>
-      <li>
-        🎯 Пройди квиз об экосистеме
-        <button>Начать</button>
-      </li>
-      <li>
-        🤝 Поделись приложением с другом
-        <button>Поделиться</button>
-      </li>
-    </ul>
-  </main>
+    <!-- Task 1 -->
+    <div class="task-card">
+      <div class="task-icon">👁</div>
+      <div class="task-info">
+        <strong>Watch 1 video</strong>
+        <span>100 $UBSCRIBE</span>
+      </div>
+      <button class="claim-btn" onclick="openVideoTask('DA1X')">Claim</button>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task-card">
+      <div class="task-icon">🔗</div>
+      <div class="task-info">
+        <strong>Share a link</strong>
+        <span>200 $UBSCRIBE</span>
+      </div>
+      <button class="claim-btn" onclick="claimSimpleTask('share')">Claim</button>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task-card">
+      <div class="task-icon">🐦</div>
+      <div class="task-info">
+        <strong>Follow on Twitter</strong>
+        <span>300 $UBSCRIBE</span>
+      </div>
+      <button class="claim-btn" onclick="claimSimpleTask('follow')">Claim</button>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task-card">
+      <div class="task-icon">❤️</div>
+      <div class="task-info">
+        <strong>Like a tweet</strong>
+        <span>200 $UBSCRIBE</span>
+      </div>
+      <button class="claim-btn" onclick="claimSimpleTask('like')">Claim</button>
+    </div>
+
+    <!-- Modal for video -->
+    <div id="video-modal" class="modal hidden">
+      <div class="modal-content">
+        <iframe id="youtube-video" width="100%" height="200" frameborder="0"
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID?enablejsapi=1"
+          allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <label for="code-input">Enter the code from the video:</label>
+        <input type="text" id="code-input" placeholder="e.g. DA1X" />
+        <button onclick="checkCode()">Submit</button>
+
+        <p id="result-message"></p>
+        <button onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <img src="assets/home-icon.svg" alt="Main" />
+    </a>
+    <a href="boost.html" class="nav-item center-btn">
+      <img src="assets/boost-icon.svg" alt="Boost" />
+    </a>
+    <a href="profile.html" class="nav-item">
+      <img src="assets/profile-icon.svg" alt="Profile" />
+    </a>
+    <a href="home.html" class="nav-item">
+      <img src="assets/menu-icon.svg" alt="Home" />
+    </a>
+  </nav>
+
+  <script src="watch.js"></script>
 </body>
 </html>
+
