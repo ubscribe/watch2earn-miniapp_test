@@ -7,30 +7,62 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>👤 Profile</h1>
-  <p>This is the Profile page</p>
 
+  <div class="profile-container">
+    <h1>👤 My Profile</h1>
+
+    <div class="profile-balance">
+      <p>Total Earned:</p>
+      <h2><span id="total-balance">$0</span></h2>
+    </div>
+
+    <div class="profile-summary">
+      <p><strong>Tasks completed:</strong></p>
+      <ul>
+        <li>🎥 Watch 1 video — <span id="watch-status">❌</span></li>
+        <li>🔗 Share a link — <span id="share-status">❌</span></li>
+        <li>🐦 Follow on Twitter — <span id="follow-status">❌</span></li>
+        <li>❤️ Like a tweet — <span id="like-status">❌</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
-  <!-- Левая кнопка (на index.html) -->
-  <a href="index.html" class="nav-item">
-    <img src="assets/home-icon.svg" alt="Main" />
-  </a>
+    <a href="index.html" class="nav-item">
+      <img src="assets/home-icon.svg" alt="Main" />
+    </a>
+    <a href="watch.html" class="nav-item center-btn">
+      <img src="assets/boost-icon.svg" alt="Boost" />
+    </a>
+    <a href="profile.html" class="nav-item">
+      <img src="assets/profile-icon.svg" alt="Profile" />
+    </a>
+    <a href="tasks.html" class="nav-item">
+      <img src="assets/menu-icon.svg" alt="Tasks" />
+    </a>
+  </nav>
 
-  <!-- Вторая кнопка -->
-  <a href="watch.html" class="nav-item center-btn">
-    <img src="assets/boost-icon.svg" alt="Boost" />
-  </a>
+  <script>
+    const tasks = [
+      { key: 'watch_video', reward: 100, statusId: 'watch-status' },
+      { key: 'share', reward: 200, statusId: 'share-status' },
+      { key: 'follow', reward: 300, statusId: 'follow-status' },
+      { key: 'like', reward: 200, statusId: 'like-status' }
+    ];
 
-  <!-- Третья кнопка -->
-  <a href="profile.html" class="nav-item">
-    <img src="assets/profile-icon.svg" alt="Profile" />
-  </a>
+    let total = 0;
+    tasks.forEach(task => {
+      const done = localStorage.getItem(`task_${task.key}`) === 'done';
+      if (done) {
+        document.getElementById(task.statusId).textContent = '✅';
+        total += task.reward;
+      }
+    });
 
-  <!-- Правая кнопка (на home.html) -->
-  <a href="home.html" class="nav-item">
-    <img src="assets/menu-icon.svg" alt="Home" />
-  </a>
-</nav>
+    document.getElementById("total-balance").textContent = `$${total}`;
+  </script>
 
 </body>
 </html>
+
