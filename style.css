@@ -300,13 +300,10 @@ header {
 }
 
 .slide-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-  transform: scale(0.92); /* 👈 Слегка уменьшить масштаб */
-  transform-origin: center;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background-color: black;
 }
 
 /* Кнопка внутри изображения, прижата к низу */
