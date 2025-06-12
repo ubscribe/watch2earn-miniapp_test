@@ -1,51 +1,54 @@
 import { supabase } from './supabase.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // ✅ Telegram WebApp готов
+  // ✅ Telegram WebApp инициализация
   Telegram.WebApp.ready();
 
-  // ✅ Попытка expand
+  // ✅ Попытка expand (если доступно)
   if (Telegram?.WebApp?.expand) {
     Telegram.WebApp.expand();
   }
 
-  // ✅ Задержка для корректной инициализации fullscreen
+  // ✅ Безопасный вызов fullscreen через задержку
   setTimeout(() => {
     if (Telegram?.WebApp?.requestFullscreen) {
       Telegram.WebApp.requestFullscreen();
     }
   }, 300);
 
-  // ✅ Получаем пользователя из Telegram
+  // ✅ Получаем данные пользователя из Telegram
   const tgUser = Telegram?.WebApp?.initDataUnsafe?.user;
   if (tgUser) {
     const username = tgUser.username || `tg${tgUser.id}`;
     localStorage.setItem("username", username);
 
-    // ✅ Проверка — есть ли юзер в Supabase
-    const { data: existingUser } = await supabase
-      .from("users")
-      .select("*")
-      .eq("username", username)
-      .single();
-
-    // ✅ Регистрация, если не найден
-    if (!existingUser) {
-      const referrer = localStorage.getItem("ref") || null;
-
-      const { error: insertError } = await supabase
+    try {
+      // Проверяем, есть ли пользователь в базе
+      const { data: existingUser } = await supabase
         .from("users")
-        .insert([{ username, referrer }]);
+        .select("*")
+        .eq("username", username)
+        .single();
 
-      if (referrer) {
-        await supabase.rpc("add_points_to_referrer", { ref_username: referrer });
-      }
+      if (!existingUser) {
+        const referrer = localStorage.getItem("ref") || null;
 
-      if (!insertError) {
-        console.log("👤 User auto-registered:", username);
+        const { error: insertError } = await supabase
+          .from("users")
+          .insert([{ username, referrer }]);
+
+        if (referrer) {
+          await supabase.rpc("add_points_to_referrer", { ref_username: referrer });
+        }
+
+        if (!insertError) {
+          console.log("👤 User auto-registered:", username);
+        }
+      } else {
+        console.log("✅ User already registered:", username);
       }
-    } else {
-      console.log("✅ User already registered:", username);
+    } catch (err) {
+      console.error("🔥 Supabase error:", err.message);
     }
   }
 
@@ -128,7 +131,7 @@ function updateSlider() {
   }, { once: true });
 }
 
-// ----------------- Mining -----------------
+// ----------------- Майнинг -----------------
 
 let totalMined = 0;
 const maxSupply = 1000000000;
@@ -143,6 +146,8 @@ function updateMiningProgress() {
   document.getElementById("mined-count").textContent = totalMined.toLocaleString();
 }
 
+// ----------------- Добавить на главный экран -----------------
+
 function addToHome() {
   if (Telegram.WebApp?.addToHomeScreen) {
     Telegram.WebApp.addToHomeScreen();
@@ -150,4 +155,3 @@ function addToHome() {
     alert("Telegram не поддерживает эту функцию на вашем устройстве.");
   }
 }
-
