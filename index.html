@@ -6,16 +6,9 @@
   <title>$UBSCRIBE</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
+
   <!-- ✅ Telegram WebApp SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script async src="https://telegram.org/js/telegram-widget.js?7"
-    data-telegram-login="UBSCRIBE_bot"
-    data-size="large"
-    data-userpic="false"
-    data-radius="10"
-    data-auth-url="https://ubscribe.github.io/watch2earn-miniapp_test/index.html"
-    data-request-access="write">
-  </script>
 </head>
 
 <body>
@@ -24,19 +17,21 @@
     <p>Earn tokens by viewing YouTube videos</p>
   </header>
 
-<section class="mining-stats common-container">
-  <h2>Total Mined</h2>
-  <div class="mining-bar">
-    <div class="mining-fill" id="mining-fill" style="width: 0%"></div>
-  </div>
-  <p class="mining-count">
-    <span id="mined-count">0</span> / 1,000,000,000 $UBSCRIBE
-  </p>
-</section>
+  <!-- ✅ Mining Progress -->
+  <section class="mining-stats common-container">
+    <h2>Total Mined</h2>
+    <div class="mining-bar">
+      <div class="mining-fill" id="mining-fill" style="width: 0%"></div>
+    </div>
+    <p class="mining-count">
+      <span id="mined-count">0</span> / 1,000,000,000 $UBSCRIBE
+    </p>
+  </section>
 
-  <!-- Learn блок в .common-container -->
+  <!-- ✅ Learn Links -->
   <section class="info-section common-container">
     <h2>Learn</h2>
+
     <a href="learn.html" class="info-card">
       <div class="icon-wrap">
         <img src="assets/alert-icon.svg" alt="Info" />
@@ -68,20 +63,16 @@
     </a>
   </section>
 
-  <!-- Слайдер в .common-container -->
+  <!-- ✅ Slider Section -->
   <div class="slider-container common-container">
     <div class="slider-wrapper">
       <div class="slider" id="slider">
-        <!-- Слайды добавляются через JS -->
+        <!-- Slides will be injected via JS -->
       </div>
     </div>
   </div>
 
-  <footer>
-
-  </footer>
-
-  <!-- Bottom Navigation -->
+  <!-- ✅ Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="index.html" class="nav-item">
       <img src="assets/home-icon.svg" alt="Main" />
@@ -93,10 +84,11 @@
       <img src="assets/profile-icon.svg" alt="Profile" />
     </a>
     <a href="home.html" class="nav-item">
-      <img src="assets/menu-icon.svg" alt="Home" />
+      <img src="assets/menu-icon.svg" alt="Tasks" />
     </a>
   </nav>
 
+  <!-- ✅ Main Script -->
   <script src="script.js"></script>
 </body>
 </html>
