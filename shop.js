@@ -1,7 +1,7 @@
 const avatars = [
-  { id: 1, name: "Neo", image: "assets/avatars/neo.png", price: 500, currency: "ubscribe" },
-  { id: 2, name: "Luna", image: "assets/avatars/luna.png", price: 750, currency: "ubscribe" },
-  { id: 3, name: "Galaxy", image: "assets/avatars/galaxy.png", price: 20, currency: "stars" },
+  { id: 1, name: "Neo", image: "assets/avatars/neo.jpg", price: 500, currency: "ubscribe" },
+  { id: 2, name: "Luna", image: "assets/avatars/luna.jpg", price: 750, currency: "ubscribe" },
+  { id: 3, name: "Galaxy", image: "assets/avatars/galaxy.jpg", price: 20, currency: "stars" },
 ];
 
 function renderAvatars() {
