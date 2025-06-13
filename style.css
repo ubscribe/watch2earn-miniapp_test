@@ -717,3 +717,39 @@ header {
 .profile-buttons button:active {
   transform: scale(0.97);
 }
+.shop-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.avatar-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.avatar-card:hover {
+  transform: scale(1.05);
+}
+
+.avatar-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.avatar-card .price {
+  margin-top: 8px;
+  color: #0f0;
+  font-weight: bold;
+}
